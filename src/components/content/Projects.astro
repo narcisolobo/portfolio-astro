@@ -1,0 +1,46 @@
+---
+import ProjectCard from "@/ui/ProjectCard.astro"; // you'll create this
+import MnemIQ from "@/assets/mnemiq.png";
+import Recollect from "@/assets/recollect.webp";
+import GoFish from "@/assets/go-fish.webp";
+
+const projects = [
+  {
+    title: "MnemIQ",
+    image: MnemIQ,
+    content:
+      "A modern, spaced-repetition flashcard app for learners who want to retain more, without the friction.",
+  },
+  {
+    title: "Recollect",
+    image: Recollect,
+    content: "Recollect is a personal CRM reimagined...",
+  },
+  {
+    title: "Go Fish",
+    image: GoFish,
+    content:
+      "Go Fish! is a playful, kid-friendly take on the classic card game...",
+  },
+];
+---
+
+<section
+  id="projects"
+  class="from-primary/50 to-bg-base-100 min-h-[70vh] bg-gradient-to-br pt-24 pb-16"
+>
+  <div class="container mx-auto px-4">
+    <h2 class="font-display mb-8 text-3xl font-semibold">Projects.</h2>
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        projects.map((project) => (
+          <ProjectCard
+            title={project.title}
+            image={project.image}
+            content={project.content}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

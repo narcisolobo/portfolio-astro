@@ -1,0 +1,31 @@
+---
+import { Image } from "astro:assets";
+import CisoCartoon from "@/assets/ciso-cartoon.webp";
+---
+
+<section
+  id="home"
+  class="flex min-h-[70vh] flex-col items-center justify-center gap-8 px-4 py-16"
+>
+  <Image
+    src={CisoCartoon}
+    alt="It's cartoon Narciso!"
+    priority
+    class="bg-primary h-36 w-36 rounded-full shadow"
+  />
+  <div>
+    <p class="text-base-content/80 font-sans">Hello, I&lsquo;m</p>
+    <h1 class="font-display mb-4 text-4xl">Narciso Lobo.</h1>
+    <p class="text-base-content/80 mb-4 font-sans">
+      I'm a full-stack software engineer and the founder of{" "}
+      <a
+        href="https://cisocodes.com"
+        target="_blank"
+        class="link-hover text-orange-700"
+      >
+        CisoCodes
+      </a>
+      .
+    </p>
+  </div>
+</section>

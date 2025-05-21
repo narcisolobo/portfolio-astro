@@ -1,22 +1,32 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import "@fontsource-variable/merriweather";
+import "@fontsource/poppins";
+import "./src/styles/global.css";
+import Navbar from "@/shared/Navbar.astro";
+import MenuDrawer from "@/ui/MenuDrawer.astro";
+import Footer from "@/shared/Footer.astro";
+---
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+<!doctype html>
+<html lang="en" data-theme="cmyk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Narciso Lobo - Portfolio</title>
+    <meta
+      name="description"
+      content="Narciso Lobo's personal web development portfolio"
+    />
+  </head>
+  <body class="relative antialiased">
+    <MenuDrawer>
+      <Navbar />
+      <div class="flex min-h-screen flex-col">
+        <div class="flex-grow"><slot /></div>
+        <Footer />
+      </div>
+    </MenuDrawer>
+  </body>
+</html>

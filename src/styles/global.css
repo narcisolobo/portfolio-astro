@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: cmyk;
+}
+
+@theme inline {
+  --font-display: "Merriweather Variable", Georgia, serif;
+  --font-sans: "Poppins", system-ui, sans-serif;
+}

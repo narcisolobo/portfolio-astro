@@ -1,0 +1,24 @@
+---
+import { Image } from "astro:assets";
+
+interface ProjectCardProps {
+  title: string;
+  image: ImageMetadata;
+  content: string;
+}
+
+const { image, title, content } = Astro.props;
+---
+
+<div class="card bg-base-100 shadow">
+  <figure>
+    <Image src={image} alt={title} />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">{title}</h2>
+    <p class="font-sans">{content}</p>
+    <div class="card-actions justify-end">
+      <button class="btn btn-primary">View Project</button>
+    </div>
+  </div>
+</div>

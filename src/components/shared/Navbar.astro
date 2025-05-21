@@ -1,0 +1,40 @@
+---
+import { Menu } from "@lucide/astro";
+---
+
+<nav
+  id="main-nav"
+  aria-label="Main navigation"
+  class="fixed top-0 right-0 left-0 z-40 transition-all duration-300"
+>
+  <div class="container mx-auto">
+    <div class="flex min-h-16 items-center gap-4 px-4 py-2">
+      <div class="flex-none">
+        <label for="mobile-navigation" class="drawer-button md:hidden">
+          <Menu size={32} />
+        </label>
+      </div>
+      <div class="flex-1">
+        <span class="font-display text-2xl">nl.</span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script is:inline>
+  const nav = document.getElementById("main-nav");
+  const threshold = 64;
+
+  const handleScroll = () => {
+    if (!nav) return;
+    if (window.scrollY > threshold) {
+      nav.classList.add("bg-base-100", "shadow-md");
+    } else {
+      nav.classList.remove("bg-base-100", "shadow-md");
+    }
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  handleScroll();
+</script>

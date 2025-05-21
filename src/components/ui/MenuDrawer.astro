@@ -1,0 +1,53 @@
+---
+
+---
+
+<div class="drawer">
+  <input
+    id="mobile-navigation"
+    name="mobile-navigation"
+    type="checkbox"
+    class="drawer-toggle"
+  />
+  <div class="drawer-content flex flex-col"><slot /></div>
+  <div class="drawer-side z-50">
+    <label
+      for="mobile-navigation"
+      aria-label="close navigation"
+      class="drawer-overlay"></label>
+    <ul
+      class="menu bg-base-300 text-base-content min-h-full w-80 p-4 font-sans">
+      <li>
+        <a class="text-orange-700" href="#home" onclick="closeDrawer()">
+          Home
+        </a>
+      </li>
+      <li>
+        <a class="text-orange-700" href="#projects" onclick="closeDrawer()">
+          Projects
+        </a>
+      </li>
+      <li>
+        <a class="text-orange-700" href="#about" onclick="closeDrawer()">
+          What I Do
+        </a>
+      </li>
+      <li>
+        <a class="text-orange-700" href="#technologies" onclick="closeDrawer()">
+          Tech Stack
+        </a>
+      </li>
+      <li>
+        <a class="text-orange-700" href="#contact" onclick="closeDrawer()">
+          Contact Me
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script is:inline>
+  window.closeDrawer = () => {
+    document.getElementById("mobile-navigation").checked = false;
+  };
+</script>
