@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 
-interface ProjectCardProps {
+export interface ProjectCardProps {
   title: string;
   image: ImageMetadata;
   content: string;
@@ -12,7 +12,7 @@ const { image, title, content } = Astro.props;
 
 <div class="card bg-base-100 shadow">
   <figure>
-    <Image src={image} alt={title} />
+    <Image src={image} alt={title} width={400} height={400} />
   </figure>
   <div class="card-body">
     <h2 class="card-title">{title}</h2>

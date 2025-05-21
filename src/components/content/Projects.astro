@@ -1,28 +1,22 @@
 ---
-import ProjectCard from "@/ui/ProjectCard.astro"; // you'll create this
-import MnemIQ from "@/assets/mnemiq.png";
-import Recollect from "@/assets/recollect.webp";
-import GoFish from "@/assets/go-fish.webp";
+import ProjectCard from "@/ui/ProjectCard.astro";
+import type { MarkdownInstance } from "astro";
 
-const projects = [
-  {
-    title: "MnemIQ",
-    image: MnemIQ,
-    content:
-      "A modern, spaced-repetition flashcard app for learners who want to retain more, without the friction.",
-  },
-  {
-    title: "Recollect",
-    image: Recollect,
-    content: "Recollect is a personal CRM reimagined...",
-  },
-  {
-    title: "Go Fish",
-    image: GoFish,
-    content:
-      "Go Fish! is a playful, kid-friendly take on the classic card game...",
-  },
-];
+interface Frontmatter {
+  title: string;
+  image: string;
+  content: string;
+}
+
+const projects = Object.values(
+  import.meta.glob<MarkdownInstance<Frontmatter>>(
+    "../../content/projects/*.md",
+    {
+      eager: true,
+    },
+  ),
+);
+console.log(projects);
 ---
 
 <section
@@ -35,9 +29,9 @@ const projects = [
       {
         projects.map((project) => (
           <ProjectCard
-            title={project.title}
-            image={project.image}
-            content={project.content}
+            title={project.frontmatter.title}
+            image={project.frontmatter.image}
+            content={project.frontmatter.content}
           />
         ))
       }

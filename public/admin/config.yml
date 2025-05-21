@@ -1,12 +1,18 @@
+backend:
+  name: github
+  repo: narcisolobo/portfolio-astro
+  branch: main
+  auth_scope: repo
 collections:
   - name: "projects"
     label: "Projects"
+    label_singular: "Project"
     folder: "src/content/projects"
     create: true
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Image", name: "image", widget: "image" }
       - { label: "Content", name: "content", widget: "text" }
-media_folder: "src/assets/images" # Location where files will be stored in the repo
-public_folder: "src/assets/images" # The src attribute for uploaded media
-local_backend: true
+media_folder: "public/images"
+public_folder: "/images"
+local_backend: false
