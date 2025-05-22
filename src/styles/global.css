@@ -7,3 +7,11 @@
   --font-display: "Merriweather Variable", Georgia, serif;
   --font-sans: "Poppins", system-ui, sans-serif;
 }
+
+.validation-error {
+  @apply text-error text-sm;
+}
+
+.input-error {
+  @apply border-error;
+}

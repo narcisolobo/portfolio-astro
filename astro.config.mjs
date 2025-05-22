@@ -7,11 +7,23 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   env: {
     schema: {
-      PUBLIC_GITHUB_CLIENT_ID: envField.string({
-        context: "client",
-        access: "public",
+      GITHUB_CLIENT_ID: envField.string({
+        context: "server",
+        access: "secret",
       }),
       GITHUB_CLIENT_SECRET: envField.string({
+        context: "server",
+        access: "secret",
+      }),
+      SUPABASE_URL: envField.string({
+        context: "server",
+        access: "secret",
+      }),
+      SUPABASE_SERVICE_ROLE_KEY: envField.string({
+        context: "server",
+        access: "secret",
+      }),
+      RESEND_API_KEY: envField.string({
         context: "server",
         access: "secret",
       }),

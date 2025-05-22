@@ -12,9 +12,11 @@
     "@fontsource-variable/merriweather": "^5.2.2",
     "@fontsource/poppins": "^5.2.6",
     "@lucide/astro": "^0.511.0",
+    "@supabase/supabase-js": "^2.49.7",
     "@tailwindcss/vite": "^4.1.7",
     "astro": "^5.7.13",
     "decap-cms-app": "^3.6.3",
+    "resend": "^4.5.1",
     "tailwindcss": "^4.1.7"
   },
   "devDependencies": {

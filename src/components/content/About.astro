@@ -1,0 +1,47 @@
+---
+import { Image } from "astro:assets";
+import { ChevronRight } from "@lucide/astro";
+import Headshot from "@/assets/narciso-lobo.jpg";
+---
+
+<section id="about" class="min-h-[70vh] pt-24 pb-16">
+  <div class="container mx-auto px-4">
+    <h2 class="font-display mb-8 text-3xl font-semibold">
+      What I do (and why).
+    </h2>
+    <Image src={Headshot} alt="Narciso Lobo" class="mb-4 block rounded-lg" />
+    <div class="card bg-base-300">
+      <div class="card-body text-lg">
+        <p class="mb-4 font-sans">
+          I&lsquo;m a full-stack developer and educator with a front-end focus
+          and a love for accessible, inclusive design. I&lsquo;ve been building
+          for the web for over 20 years and teaching for the last five — helping
+          learners from all backgrounds grow through programs like Coding Dojo,
+          Chicago Codes, and WOS. I&lsquo;m the founder of CisoCodes, a
+          curriculum studio focused on uplifting underserved communities through
+          tech.
+        </p>
+        <p class="mb-4 font-sans">
+          React, Next.js, .NET, and Flask are my daily tools. Music, mentorship,
+          and perfect Lighthouse scores keep me inspired.
+        </p>
+        <p class="mb-4 font-sans">
+          I&lsquo;m also a theatre major, Chicago sports fan, and cancer
+          survivor — living in LA with my Sheepadoodle Jinja and an attitude of
+          gratitude.
+        </p>
+        <div class="flex items-center justify-end">
+          <a
+            href="/bio"
+            class="btn btn-primary text-base-content group font-sans"
+          >
+            Read more{" "}
+            <ChevronRight
+              class="transition-transform group-hover:translate-x-1 group-active:translate-x-1"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

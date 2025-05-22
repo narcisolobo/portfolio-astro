@@ -1,0 +1,145 @@
+<section id="contact" class="pt-24 pb-16">
+  <div class="container mx-auto px-4">
+    <h2 class="font-display mb-8 text-3xl font-semibold">Contact me.</h2>
+
+    <form id="contact-form" class="space-y-4">
+      <input
+        type="text"
+        name="website"
+        tabindex="-1"
+        autocomplete="off"
+        aria-hidden="true"
+        class="absolute left-[-9999px]"
+      />
+
+      <div>
+        <label
+          id="name-label"
+          class="input text-base-content/80 w-full"
+          for="name"
+        >
+          <input
+            id="name"
+            name="name"
+            type="text"
+            class="grow"
+            autocomplete="name"
+            placeholder="Name"
+            aria-describedby="name-error"
+          />
+        </label>
+        <p id="name-error" class="validation-error" role="alert"></p>
+      </div>
+
+      <div>
+        <label
+          id="email-label"
+          class="input text-base-content/80 w-full"
+          for="email"
+        >
+          <input
+            id="email"
+            name="email"
+            type="email"
+            class="grow"
+            autocomplete="email"
+            placeholder="Email"
+            aria-describedby="email-error"
+          />
+        </label>
+        <p id="email-error" class="validation-error" role="alert"></p>
+      </div>
+
+      <div>
+        <label for="message" class="sr-only" id="message-label"
+          >Your Message</label
+        >
+        <textarea
+          id="message"
+          name="message"
+          class="textarea w-full"
+          placeholder="Message"
+          aria-describedby="message-error"></textarea>
+        <p id="message-error" class="validation-error" role="alert"></p>
+      </div>
+
+      <div class="flex justify-end">
+        <button type="submit" class="btn btn-primary group font-sans">
+          Send Message
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script>
+  import { isActionError } from "astro:actions";
+  import { actions, isInputError } from "astro:actions";
+  import { navigate } from "astro:transitions/client";
+
+  const nameLabel = document.getElementById("name-label")!;
+  const emailLabel = document.getElementById("email-label")!;
+
+  const name = document.getElementById("name")!;
+  const email = document.getElementById("email")!;
+  const message = document.getElementById("message")!;
+
+  const nameError = document.getElementById("name-error")!;
+  const emailError = document.getElementById("email-error")!;
+  const messageError = document.getElementById("message-error")!;
+
+  function clearErrors() {
+    nameError.textContent = "";
+    emailError.textContent = "";
+    messageError.textContent = "";
+
+    nameLabel.classList.remove("input-error");
+    emailLabel.classList.remove("input-error");
+    message.classList.remove("input-error");
+
+    name.removeAttribute("aria-invalid");
+    email.removeAttribute("aria-invalid");
+    message.removeAttribute("aria-invalid");
+  }
+
+  const form = document.getElementById("contact-form")! as HTMLFormElement;
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    clearErrors();
+
+    const formData = new FormData(form);
+
+    const website = formData.get("website");
+    if (website) navigate("/confirmation");
+    else {
+      const { error } = await actions.sendContactEmail(formData);
+      if (isInputError(error)) {
+        if (error.fields.name) {
+          nameError.textContent = error.fields.name.join(", ");
+          nameLabel.classList.add("input-error");
+          name.setAttribute("aria-invalid", "true");
+        }
+
+        if (error.fields.email) {
+          emailError.textContent = error.fields.email.join(", ");
+          emailLabel.classList.add("input-error");
+          email.setAttribute("aria-invalid", "true");
+        }
+
+        if (error.fields.message) {
+          messageError.textContent = error.fields.message.join(", ");
+          message.classList.add("input-error");
+          message.setAttribute("aria-invalid", "true");
+        }
+      } else if (isActionError(error)) {
+        console.error("Action error", error);
+        navigate("/email-error");
+      } else if (error) {
+        console.error("Unknown error", error);
+        navigate("/email-error");
+      } else {
+        navigate("/confirmation");
+      }
+    }
+  });
+</script>
